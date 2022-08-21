@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+<!--  -->
+{% block content %}
+    <h1>Ingredients</h1>
+    <a href="{% url 'ingredients-create' %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add
+        Ingredients</a>
+    <div class="d-flex flex-row">
+    {% for ingredient in ingredients %}
+        <div class="card my-4" style="width: 18rem; margin: 10px;">
+            <div class="card-body">
+                <h5 class="card-title">{{ ingredient.title }}</h5>
+                <h5 class="card-title">{{ ingredient.catagory }}</h5>
+                <!-- <h5 class="card-title">{{ ingredient.catogory }}</h5> -->
+                <h6 class="card-subtitle mb-2 text-muted">{{ingredient.author}}</h6>
+                <p class="card-text">{{ ingredient.description }}</p>
+                <h6 class="card-subtitle mb-2 text-muted">{{ingredient.updated_at|date:"F d, Y"}}</h6>
+                <a href="{% url 'ingredients-detail' ingredient.pk %}" class="card-link">View Ingredient</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>    
+{% endblock content%}
